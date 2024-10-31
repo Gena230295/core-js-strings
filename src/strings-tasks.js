@@ -267,8 +267,8 @@ function formatTime(minutes, seconds) {
  *   reverseString('abcdef') => 'fedcba'
  *   reverseString('12345') => '54321'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
+function reverseString(str) {
+  return str.split('').reverse().join('');
 }
 
 /**
@@ -282,8 +282,12 @@ function reverseString(/* str */) {
  *   orderAlphabetically('textbook') => 'bekoottx'
  *   orderAlphabetically('abc123xyz') => '123abcxyz'
  */
-function orderAlphabetically(/* str */) {
-  throw new Error('Not implemented');
+function orderAlphabetically(str) {
+  const strAlph = '0123456789abcdefghijklmnopqrstuvwxyz';
+  const newStr = str
+    .split('')
+    .sort((a, b) => strAlph.indexOf(a) - strAlph.indexOf(b));
+  return newStr.join('');
 }
 
 /**
@@ -298,8 +302,8 @@ function orderAlphabetically(/* str */) {
  *   containsSubstring('JavaScript is Fun', 'Python') => false
  *   containsSubstring('12345', '34') => true
  */
-function containsSubstring(/* str, substring */) {
-  throw new Error('Not implemented');
+function containsSubstring(str, substring) {
+  return str.includes(substring);
 }
 
 /**
@@ -316,10 +320,16 @@ function containsSubstring(/* str, substring */) {
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
  */
-function countVowels(/* str */) {
-  throw new Error('Not implemented');
+function countVowels(str) {
+  const alphStr = 'aeiouyAEIOUY';
+  let sum = 0;
+  for (let i = 0; i < str.length; i += 1) {
+    if (alphStr.includes(str[i])) {
+      sum += 1;
+    }
+  }
+  return sum;
 }
-
 /**
  * Returns true if the string is a palindrome; otherwise false.
  * https://en.wikipedia.org/wiki/Palindrome
@@ -333,8 +343,20 @@ function countVowels(/* str */) {
  *   isPalindrome('apple') => false
  *   isPalindrome('No lemon, no melon') => true
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  const strAlph =
+    '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  let str1 = '';
+  for (let i = 0; i < str.length; i += 1) {
+    if (strAlph.includes(str[i])) {
+      str1 += str[i].toLowerCase();
+    }
+  }
+  const str2 = str1.split('').reverse().join('');
+  if (str1 === str2) {
+    return true;
+  }
+  return false;
 }
 
 /**
